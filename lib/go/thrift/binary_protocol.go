@@ -469,6 +469,7 @@ func (p *TBinaryProtocol) readAll(buf []byte) error {
 	return NewTProtocolException(err)
 }
 
+// TODO optimize to save mem overhead caused by []byte->string
 func (p *TBinaryProtocol) readStringBody(size int) (value string, err error) {
 	if size < 0 {
 		return "", nil
