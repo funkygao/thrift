@@ -19,7 +19,10 @@
 
 package thrift
 
-import "io"
+import (
+	"github.com/funkygao/golib/hack"
+	"io"
+)
 
 type RichTransport struct {
 	TTransport
@@ -39,7 +42,7 @@ func (r *RichTransport) WriteByte(c byte) error {
 }
 
 func (r *RichTransport) WriteString(s string) (n int, err error) {
-	return r.Write([]byte(s))
+	return r.Write(hack.Byte(s))
 }
 
 func readByte(r io.Reader) (c byte, err error) {
